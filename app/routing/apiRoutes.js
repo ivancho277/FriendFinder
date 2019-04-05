@@ -9,3 +9,15 @@ module.exports = function(app){
     })
 
 }
+
+function checkArrayDif(arr){
+    var sumarr = arr.map(x => x.reduce((a,b) => a +b))
+    
+    return sumarr
+    
+  }
+  
+  var arr1 = [5,3,3,1,4,4,5,4,1,5]
+  var arr2 = [2,2,1,1,5,5,5,5,5,5]
+  var arr3 = [4,1,1,2,3,1,4,5,5,1]
+  var arrofarr = [arr1, arr3, arr2]
