@@ -238,6 +238,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
+    <script src="https://code.jquery.com/jquery.js"></script>
 </body>
 
 </html>
@@ -255,6 +256,12 @@
         imageLink : $("#img-link").val(),
         scores: scores
     }
+
+    $.post("api/data", newPerson, (data) => {
+        if(data){
+            console.log("modal should show up if this works")
+        }
+    })
 
 
     
