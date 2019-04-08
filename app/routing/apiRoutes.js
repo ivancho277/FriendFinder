@@ -6,7 +6,7 @@ module.exports = function(app){
     })
     app.post("/api/data", function(req, res) {
         friendData.push(req.body)
-        res.json(checkArrayDif(req.body, friendData))
+        res.json(checkArrayDif(friendData[friendData.length - 1], friendData))
     })
 }
 function checkArrayDif(me, arr){
