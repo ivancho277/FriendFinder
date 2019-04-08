@@ -6,30 +6,26 @@ module.exports = function(app){
     })
     app.post("/api/data", function(req, res) {
         friendData.push(req.body)
+        res.json(checkArrayDif(req.body, friendData))
     })
 }
-
-// function checkArrayDif(myAnsArry, arr){
-//     var sumarr = arr.map(x => x.reduce((a,b) => a +b))
-//     var mysum = myAnsArry.reduce((a,b) => a+b)
-//     //check what my sum is closest to
-//     var closest = sumarr[0]
-//     //array to hold multiple values if they are closest;
-//     var matches = []
-//     for(var i = 0; i < sumarr.length; i++){
-//       if(Math.abs(sumarr[i] - mysum) === 0){
-//         matches.push(sumarr[i])
-//       }
-//       else{
-//         if(Math.abs(sumarr[i] - mysum) < closest){
-//           closest = sumarr[i]
-//         }
-//       }
-//     }
-//     console.log(mysum)
-//     return closest
-//   }
-  
+function checkArrayDif(me, arr){
+    var sumarr = arr.map(x => x.scores.reduce((a,b) => a +b))
+    var mysum = me.scores.reduce((a,b) => a+b)
+    //check what my sum is closest to
+    console.log(sumarr)
+    var closest = Math.abs(sumarr[0] - mysum)
+    //array to hold multiple values if they are closest;
+    var matches = []
+    for(var i = 1; i < sumarr.length; i++){
+        if(Math.abs(sumarr[i] - mysum) < closest){
+          closest = i
+      }
+    }
+    console.log(mysum)
+    console.log(closest)
+    return arr[closest]
+  }
   
 //   var myarr = [1,2,3,4,5,5,4,3,2,1]
 //   var arr1 = [5,3,3,1,4,4,5,4,1,5]
