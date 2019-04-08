@@ -6,12 +6,12 @@ module.exports = function(app){
     })
     app.post("/api/data", function(req, res) {
         friendData.push(req.body)
-        res.json(checkArrayDif(friendData[friendData.length - 1], friendData))
+        res.json(checkArrayDif(req.body, friendData))
     })
 }
 function checkArrayDif(me, arr){
-    var sumarr = arr.map(x => x.scores.reduce((a,b) => a +b))
-    var mysum = me.scores.reduce((a,b) => a+b)
+    var sumarr = arr.map(x => x.answers.reduce((a,b) => a +b))
+    var mysum = me.answers.reduce((a,b) => a+b)
     //check what my sum is closest to
     console.log(sumarr)
     var closest = Math.abs(sumarr[0] - mysum)
